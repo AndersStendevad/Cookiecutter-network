@@ -1,4 +1,4 @@
-# Cookiecutter-network
+# cookiecutter-network
 
 A work in progress cookiecutter to be able to start a network analysis project. Right now it implements linters, pytest and jupyter lab.
 
