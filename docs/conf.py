@@ -17,13 +17,13 @@
 
 # -- Project information -----------------------------------------------------
 
-project = "cookiecutter-xtdb"
+project = "cookiecutter-network"
 copyright = "2022, Anders Stendevad"
 author = "Anders Stendevad"
 
 # The full version, including alpha/beta/rc tags
-release = "0.0.1"
-
+with open('../VERSION', 'r') as f:
+    release = f.read()
 
 # -- General configuration ---------------------------------------------------
 
@@ -59,3 +59,11 @@ html_theme = "sphinx_rtd_theme"
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = []
+
+# Add version to be used in docs
+variables_to_export = [
+    "release",
+]
+frozen_locals = dict(locals())
+rst_epilog = '\n'.join(map(lambda x: f".. |{x}| replace:: {frozen_locals[x]}", variables_to_export))
+del frozen_locals
